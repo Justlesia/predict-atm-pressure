@@ -7,54 +7,54 @@ Architectures      : GradientBoostingRegressor
 Application        : Meteological domain
 ```
 
-## Problem Statement 
-The fractures to cervical region usually result from high energy trauma like automobile crashes and falls. In elderly people, a fall of the charir or falling on the ground can cause a cervical fracture. Cervical fracture is the fracture of any of the seven cervical vertebrae in the neck. Since they support the head and connect it to the shoulders and the body, immediate response to an injury to it paramount as it can have serious consequences. Injury to the vertebra can lead temporary or permanent paralysis from the neck down and in some cases even leading to death. So, a physician will usually need support from radiographic studies such as MRI or CT scans to determine the extent of the injuries. This project is an endeavour to use AI to assist a physician to determine if a CT scan image shows a "fracture" in a vertbrae or if it is "normal".
+### Description of data
+
+The system of automatic state ambient air monitoring stations in Lithuania consists of 14 urban air quality monitoring stations operating in Vilnius, Kaunas, Klaipėda, Šiauliai, Panevėžys, Jonava, Kėdainiai, Naujoji Akmenė and Mažeikiai and 3 integrated monitoring stations operating in Aukštaitija, Žemaitija and Dzūkija National Parks.
+
+Concentrations of the following pollutants are measured at automatic air quality monitoring stations: particulate matter PM10, fine particulate matter PM2.5, nitrogen oxides (NO2, NOx, NO), sulfur dioxide (SO2), carbon monoxide (CO), ozone (O3), benzene, mercury.
+The tests and measurements shall be carried out in accordance with the requirements of Directives 2004/107/EC of the European Parliament and of the Council relating to arsenic, cadmium, mercury, nickel and polycyclic aromatic hydrocarbons in ambient air and 2008/50/EC on ambient air quality and cleaner air for Europe.
+
+We will loo at Atmosfer pressure measurements.
+
+The data consists of files obtained from different sources:
+
+* Averages.csv - data air monitoring (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/Averages/:format/csv)
+* Quantity.csv - dictionary (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/Quantity/:format/csv)
+* QuantityUnits.csv - dictionary (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/QuantityUnits/:format/csv)
+* Station.csv - dictionary (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/Station/:format/csv)
+
+
 
 
 
 ## Dataset Details
 ```
-Dataset Description: Contains images of Fractured and Normal Cervical CT scans in their respective folders in Train and Test Folders
-Dataset Name       : Spine Fracture Prediction from C.T. Dataset
-Dataset Link       : https://www.kaggle.com/datasets/vuppalaadithyasairam/spine-fracture-prediction-from-xrays/code
+Dataset Name       : Air quality data
+Dataset Category       : Environmental and climate monitoring
+Dataset Link       : [https://data.gov.lt/datasets/500/](https://data.gov.lt/datasets/500/)
 Number : 
 ```
 
-
-## Parameters for Training
-```
-For Pre-trained Models:
-Model Architecture      : Input, Pre-trained base models(Inceptionv3, Resnet50V2, Xception with imagenet weights), GlobalAveragePooling2D, Dense - Output layer
-
-For Custom Deep CNN: 
-Architecture            : CNN2D - 2 layers, Dropout, Batch Normalization, MaxPool2D, Flatten, Dense - 2 layers, Dense - Output layer
-Regularization          : Dropout (0.2)
- 
-Optimizers              : SGD - Stochastic Gradient Descent
-Loss Function           : binary_crossentropy
-Batch Size              : 16
-Number of Epochs        : 20
-```
-
-## Classification Metrics of the Final Model
+## Metrics of the Final Model
 ```
 Final Model             : https://github.com/praveenbalijepalli/mlzoomcamp-capstone-1/blob/main/cerv_fracture_model.h5
 Final TFlite Model      : https://github.com/praveenbalijepalli/mlzoomcamp-capstone-1/blob/main/cerv_fracture_model.tflite
-Train, Val and Test     
-Accuracy Score          : Train - 1.0000 ,  Val - 0.9105 ,  Test - 0.8600
-Loss                    : Train - 0.0024 ,  Val - 0.1695 ,  Test - 0.3144 
-Precision               : Train - 1.0000 ,  Val - 0.8482 ,  Test - 0.9138
-Recall                  : Train - 1.0000 ,  Val - 1.0000 ,  Test - 0.7950
-
-This is a case of overfitting. 
-The model architecture and other model parameters along with the dataset and its preprocessing need to studied.
-This model should not be deployed in production
+MAE:                    : Val - 4,  Test - 7 
 ```
+
+
+## Download the data in the ./datatset if needed
+* Averages.csv - data air monitoring (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/Averages/:format/csv)
+* Quantity.csv - dictionary (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/Quantity/:format/csv)
+* QuantityUnits.csv - dictionary (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/QuantityUnits/:format/csv)
+* Station.csv - dictionary (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/Station/:format/csv)
+
 
  
 ## Sample Input and Output
 
 In the predict_test.py file, replace the data variable with the following:
+
 1. Sample Input:
    ```
    data = {'url':'https://raw.githubusercontent.com/praveenbalijepalli/mlzoomcamp-capstone-1/main/sample%20images%20for%20testing/fracture.png'}
