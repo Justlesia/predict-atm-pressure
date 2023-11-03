@@ -1,4 +1,5 @@
-# Project: Atmosfer pressure. Regression model.
+# Project:  Air quality data. Environmental and climate monitoring.
+# Atmosfer pressure. Regression model.
 ``` 
 Artificial Intelligence  
 Domain             : Regression
@@ -14,68 +15,22 @@ The system of automatic state ambient air monitoring stations in Lithuania consi
 Concentrations of the following pollutants are measured at automatic air quality monitoring stations: particulate matter PM10, fine particulate matter PM2.5, nitrogen oxides (NO2, NOx, NO), sulfur dioxide (SO2), carbon monoxide (CO), ozone (O3), benzene, mercury.
 The tests and measurements shall be carried out in accordance with the requirements of Directives 2004/107/EC of the European Parliament and of the Council relating to arsenic, cadmium, mercury, nickel and polycyclic aromatic hydrocarbons in ambient air and 2008/50/EC on ambient air quality and cleaner air for Europe.
 
-We will loo at Atmosfer pressure measurements.
+We will look at Atmosfer pressure measurements.
 
-The data consists of files obtained from different sources:
+The data consists of files obtained from different sources(https://data.gov.lt/datasets/500/ ):
 
 * Averages.csv - data air monitoring (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/Averages/:format/csv)
 * Quantity.csv - dictionary (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/Quantity/:format/csv)
 * QuantityUnits.csv - dictionary (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/QuantityUnits/:format/csv)
 * Station.csv - dictionary (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/Station/:format/csv)
-
-
-
-
-
-## Dataset Details
-```
-Dataset Name       : Air quality data
-Dataset Category       : Environmental and climate monitoring
-Dataset Link       : [https://data.gov.lt/datasets/500/](https://data.gov.lt/datasets/500/)
-Number : 
-```
 
 ## Metrics of the Final Model
 ```
-Final Model             : https://github.com/praveenbalijepalli/mlzoomcamp-capstone-1/blob/main/cerv_fracture_model.h5
-Final TFlite Model      : https://github.com/praveenbalijepalli/mlzoomcamp-capstone-1/blob/main/cerv_fracture_model.tflite
+Final Model             : model.bin
+Final DictVectorizer    : dv.bin
+Final MinMaxScaler      : scaler.bin
 MAE:                    : Val - 4,  Test - 7 
-```
-
-
-## Download the data in the ./datatset if needed
-* Averages.csv - data air monitoring (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/Averages/:format/csv)
-* Quantity.csv - dictionary (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/Quantity/:format/csv)
-* QuantityUnits.csv - dictionary (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/QuantityUnits/:format/csv)
-* Station.csv - dictionary (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/Station/:format/csv)
-
-
- 
-## Sample Input and Output
-
-In the predict_test.py file, replace the data variable with the following:
-
-1. Sample Input:
-   ```
-   data = {'url':'https://raw.githubusercontent.com/praveenbalijepalli/mlzoomcamp-capstone-1/main/sample%20images%20for%20testing/fracture.png'}
-   ```
-
-   Sample Output:
-   ```
-   {'Predict Probability': '0.06067303', 'Prediction': 'fracture'}
-   ```
-   
-   
- 2. Sample Input:
-    ```
-    data = {'url':'https://raw.githubusercontent.com/praveenbalijepalli/mlzoomcamp-capstone-1/main/sample%20images%20for%20testing/normal.png'}
-    ```
-
-    Sample Output:
-    ```
-    {'Predict Probability': '0.7252521', 'Prediction': 'normal'}
-    ```
- 
+``` 
 ## Tools / Libraries
 ```
 Languages               : Python
@@ -84,87 +39,36 @@ Libraries               : Keras, TensorFlow
 Virtual Environment     : pipenv
 ```
 
-## Scripts
+## Scripts and Notebook:
 ```
-Train Script            : https://github.com/praveenbalijepalli/mlzoomcamp-capstone-1/blob/main/train.py
-Keras to TFlite Script  : https://github.com/praveenbalijepalli/mlzoomcamp-capstone-1/blob/main/convert_keras_to_tflite.py
-Predict Script          : https://github.com/praveenbalijepalli/mlzoomcamp-capstone-1/blob/main/predict_flask.py
-Predict Test Script     : https://github.com/praveenbalijepalli/mlzoomcamp-capstone-1/blob/main/predict_test.py
+Notebook                : [https://github.com/Justlesia/predict-atm-pressure/blob/main/notebook.ipynb]
+Predict Script          : [https://github.com/Justlesia/predict-atm-pressure/blob/main/predict.py]
+Train Script            : [https://github.com/Justlesia/predict-atm-pressure/blob/main/train.py]
+Test Script             : [https://github.com/Justlesia/predict-atm-pressure/blob/main/test.py]
+
 ```
 
 ## Run the Model as is  
 Steps to run the scripts/notebooks as is:
 
-1. Clone the repo by running the following command:
-   ```
-   git clone https://github.com/praveenbalijepalli/mlzoomcamp-capstone-1.git
-   ```
-2. Open a terminal or command prompt and change directory to the folder where this project is cloned.
-
-3. Run the following command to activate the virtual environment for the project:
-   ```
-   pipenv shell
-   ```
-
-   In case, pipenv is not installed in your system, to install pipenv and to activate the virtual environment for the project, type the following commands:
-   ```
-   pip install pipenv 
-   pipenv shell (in the project folder)
-   ``` 
-4.  To install the files and dependencies related to the project, run the following in the folder containing Pipfile/Pipfile.lock
-    ```
-    pipenv install
-    ```
-5.  To run the scripts do the following:
-
-    a. To train the the model and save it using train.py script, run the following command in the terminal/prompt.
-       ```
-       python train.py (To train and save the model)
-       ```
-       
-    b. Run predict_flask.py using python in a terminal/prompt.
-       ```
-       python predict_flask.py (To start the prediction service)
-       ```
-       
-    c. Open another terminal/prompt and run predict_test.py.
-       ```
-       python predict_test.py (To test the prediction service)
-       ```
-
-
-## Model as a web service 
-
-### Using Waitress  
-   
-   1. Follow the steps mentioned above from 1 to 4, if you haven't already completed them.
-   
-   2. To run the prediction service offered by predict_flask.py using waitress, type the following command
-      ```
-      waitress-serve --listen=0.0.0.0:9696 predict_flask:app (This will keep the running the prediction service)
-      ```
-      
-   3. Open another terminal/prompt and run predict_test.py
-      ```
-      python predict_test.py (To test the prediction service)
-      ``` 
-      
- ### Using Docker 
+### Using Docker 
  
-   1. Clone the directory into you work space.
+   1. Clone the repo by running the following command:
+   ```
+   git clone https://github.com/Justlesia/predict-atm-pressure.git
+   ```
    
-   2. Open predict_flask.py. Go to the part of the chart where libraries are imported. 
-      ```
-      Uncomment:  import tflite_runtime.interpreter as tflite  and 
-      Comment:    import tensorflow.lite as tflite
-      ```
-      Save the changes to the file. This change is temporary. 
-      Once we build run our docker image and test our predictions and get them right, we will change it back
+   1. Download data into the ./datasets:
+
+   (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/Averages/:format/csv)
+   (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/Quantity/:format/csv)
+   (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/QuantityUnits/:format/csv)
+   (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/Station/:format/csv)
       
    2. Build and run the application using the commands:
       ```
-      docker build -t zoomcamp-capstone-1 .
-      docker run -it --rm -p 9696:9696 zoomcamp-capstone-1  (This will keep the running the prediction service from the docker container)
+      docker build -t predict . 
+      docker run -it -p 9696:9696 predict:latest 
       ```
       
    3. Open another terminal/prompt and run predict_test.py  
@@ -173,13 +77,6 @@ Steps to run the scripts/notebooks as is:
       ```
       If the prediction services gives prediction, then it means the docker container is working.
       
-   4. Open predict_flask.py. Go to the part of the chart where libraries are imported. 
-      ```  
-      Comment:     import tflite_runtime.interpreter as tflite  and 
-      Uncomment:   import tensorflow.lite as tflite
-      ```
-      Save the changes to the file.
- 
 ## Deployment using AWS Lambda, AWS ECR and AWS API Gatway
    1. Go to ```AWS Lambda folder``` in the repository and type the following commands. The `Dockerfile` in the folder will be used to create a docker image.
       ```
