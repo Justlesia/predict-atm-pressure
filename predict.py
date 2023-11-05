@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[18]:
-
-
-import numpy as np
 import pandas as pd
 from numpy import asarray
 import pickle
@@ -18,10 +14,6 @@ with open('model.bin', 'rb') as f_in:
 with open('scaler.bin', 'rb') as f_in:
     scaler = pickle.load(f_in)
 
-with open('dv.bin', 'rb') as f_in:
-    dv = pickle.load(f_in)
-
-
 app = Flask('app')
 
 
@@ -30,15 +22,12 @@ def predict():
     client = request.get_json()
 
     client = pd.DataFrame.from_dict(client)
-    client[['latitude','longitude']] = scaler.transform(asarray(client[['latitude','longitude']]))
+    client[['latitude', 'longitude']] = scaler.transform(asarray(client[['latitude', 'longitude']]))
 
-    val_test = client.to_dict(orient='records')
-    X = dv.transform(val_test)
-
-    y_pred = model.predict(X)
+    y_pred = model.predict(client)
 
     result = {
-        'atm.pressure': float(y_pred)
+        'atm.pressure': int(y_pred)
     }
 
     return jsonify(result)
@@ -46,7 +35,3 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=9696)
-
-
-
-
