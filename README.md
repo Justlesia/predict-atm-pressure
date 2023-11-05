@@ -80,11 +80,11 @@ Steps to run the scripts/notebooks as is:
 ## Deployment using heroku
 
    Skip this step and go through to the 2 step.
-   1. Go to ``use heroku console`` in the repository and type the following commands. The `Dockerfile` in the folder will be used to create a docker image.
+   1. Go to use `` heroku cml`` in the repository and type the following commands. The `heroku.yml` in the folder will be used to create a docker image and run the app.
       ```
-      heroku container: login
-      heroku container: push web
-      heroku container: release
+      git add .
+      git commit -m "add bild from heroku.yml"
+      push heroku master
       ```
      
    2. To test if the docker container was built properly and running, go to the test_heroku.py 
