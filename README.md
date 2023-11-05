@@ -29,7 +29,7 @@ The data consists of files obtained from different sources(https://data.gov.lt/d
 Final Model             : model.bin
 Final DictVectorizer    : dv.bin
 Final MinMaxScaler      : scaler.bin
-MAE:                    : Val - 3,  Test - 6 
+MAE:                    : Val - 3,  Test - 7 
 ``` 
 ## Tools / Libraries
 ```
@@ -51,27 +51,27 @@ Test Script             : [https://github.com/Justlesia/predict-atm-pressure/blo
 ## Run the Model as is  
 Steps to run the scripts/notebooks as is:
 
-### Using Docker 
- 
-   1. Clone the repo by running the following command:
+1. Clone the repo by running the following command:
    ```
    git clone https://github.com/Justlesia/predict-atm-pressure.git
    ```
-   
-   1. Download data into the ./datasets:
 
+2. Download data into the ./datasets:
    (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/Averages/:format/csv)
    (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/Quantity/:format/csv)
    (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/QuantityUnits/:format/csv)
    (https://get.data.gov.lt/datasets/gov/aaa/oro_stociu_matavimai/Station/:format/csv)
-      
-   2. Build and run the application using the commands:
+
+
+### Using Docker 
+ 
+   1. Build and run the application using the commands:
       ```
       docker build -t predict . 
       docker run -it -p 9696:9696 predict:latest 
       ```
       
-   3. Open another terminal/prompt and run test_docker.py  
+   2. Open another terminal/prompt and run test_docker.py  
       ``` 
       python test_docker.py
       ```
@@ -96,7 +96,7 @@ Steps to run the scripts/notebooks as is:
       ```
       python test_heroku.py
       ```
-   4. If the prediction services give prediction, the heroku app is working.
+      If the prediction services give prediction, the heroku app is working.
 
    
    
