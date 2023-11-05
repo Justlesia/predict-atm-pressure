@@ -24,18 +24,17 @@ data['year'] = data.datetime.dt.year
 data['month'] = data.datetime.dt.month
 data['weekday'] = data.datetime.dt.weekday
 data['day'] = data.datetime.dt.day
-data = data[data['year']== 2023]
+data = data[data['year']>= 2023]
 data =data[data['code_unit._id'] == '67461e7c-506e-430a-8962-cd25ebed54da']
 d_q = data_quantity[data_quantity['code_unit._id'] == '67461e7c-506e-430a-8962-cd25ebed54da'] 
 
 data = data.merge(d_q,how='left', on = 'code_unit._id')
 data_station['stat_num._id'] = data_station['_id']
 data = data.merge(data_station,how='left', on = 'stat_num._id', suffixes=('_xx', '_yy'))
-data = data[['lvalue','stat_num','code_quantity._id','year','month','weekday','day','latitude','longitude']]
+data = data[['lvalue','stat_num','year','month','weekday','day','latitude','longitude']]
 
 data = data.drop_duplicates()
 
-#выделим таргет
 features, target = data.drop(['lvalue'], axis=1), data['lvalue']
 features = features.fillna(0)
 
@@ -50,7 +49,8 @@ dicts = features.to_dict(orient='records')
 dv = DictVectorizer(sparse=False)
 X = dv.fit_transform(dicts)
 
-model = GradientBoostingRegressor(learning_rate = 0.2, max_depth = 12)
+model = GradientBoostingRegressor(learning_rate = 0.4, loss = 'huber', max_depth = 13, random_state = 123)
+
 model.fit(X, target)
 
 with open('model.bin', 'wb') as f_out:
