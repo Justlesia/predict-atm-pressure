@@ -71,9 +71,9 @@ Steps to run the scripts/notebooks as is:
       docker run -it -p 9696:9696 predict:latest 
       ```
       
-   3. Open another terminal/prompt and run predict_test.py  
+   3. Open another terminal/prompt and run test_docker.py  
       ``` 
-      python predict_test.py (To test the prediction service)
+      python test_docker.py
       ```
       If the prediction services gives prediction, then it means the docker container is working.
       
