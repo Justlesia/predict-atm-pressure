@@ -31,7 +31,7 @@ d_q = data_quantity[data_quantity['code_unit._id'] == '67461e7c-506e-430a-8962-c
 data = data.merge(d_q,how='left', on = 'code_unit._id')
 data_station['stat_num._id'] = data_station['_id']
 data = data.merge(data_station,how='left', on = 'stat_num._id', suffixes=('_xx', '_yy'))
-data = data[['lvalue','stat_num._id','stat_num','code_quantity._id','year','month','weekday','day','latitude','longitude']]
+data = data[['lvalue','stat_num','code_quantity._id','year','month','weekday','day','latitude','longitude']]
 
 data = data.drop_duplicates()
 
