@@ -44,8 +44,8 @@ Virtual Environment     : pipenv
 Notebook                : [https://github.com/Justlesia/predict-atm-pressure/blob/main/notebook.ipynb]
 Predict Script          : [https://github.com/Justlesia/predict-atm-pressure/blob/main/predict.py]
 Train Script            : [https://github.com/Justlesia/predict-atm-pressure/blob/main/train.py]
-Test Script             : [https://github.com/Justlesia/predict-atm-pressure/blob/main/test.py]
-
+Test Script             : [https://github.com/Justlesia/predict-atm-pressure/blob/main/test_docker.py]
+Test Script             : [https://github.com/Justlesia/predict-atm-pressure/blob/main/test_heroku.py]
 ```
 
 ## Run the Model as is  
