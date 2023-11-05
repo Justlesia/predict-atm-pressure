@@ -29,7 +29,7 @@ The data consists of files obtained from different sources(https://data.gov.lt/d
 Final Model             : model.bin
 Final DictVectorizer    : dv.bin
 Final MinMaxScaler      : scaler.bin
-MAE:                    : Val - 4,  Test - 7 
+MAE:                    : Val - 3,  Test - 6 
 ``` 
 ## Tools / Libraries
 ```
