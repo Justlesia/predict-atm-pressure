@@ -35,7 +35,6 @@ MAE:                    : Val - 3,  Test - 6
 ```
 Languages               : Python
 Tools/IDE               : Anaconda
-Libraries               : Keras, TensorFlow
 Virtual Environment     : pipenv
 ```
 
